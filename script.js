@@ -1,6 +1,7 @@
 
-//button//
+
 window.addEventListener("DOMContentLoaded", function() {
+    //button//
     let div = document.createElement('div');
     let button = document.createElement('button');
     button.innerText = 'Add Square';
@@ -22,7 +23,7 @@ button.addEventListener('click', function() {
     div.addEventListener ('mouseover', function() {
         p.style.color = "white";
     });
-    div.id = 'square' + squareId++; 
+    div.id = squareId++; 
 
     //reverse of above//
     div.className = 'square';
@@ -53,11 +54,28 @@ button.addEventListener('click', function() {
         let aRandomColor = randomColor();
         div.style.backgroundColor = aRandomColor; 
     });
-
+    //double click  with even/odd results
+    div.addEventListener ('dblclick', function() {
+        console.log("text");
+        console.log(div.id);
+        if (div.id %2 === 0) {
+            if (div.nextSibling) {
+                document.body.removeChild(div.nextSibling);
+            } else {
+                alert('No Square To Delete');
+            };
+        } else {        
+            if (div.previousSibling) {
+                document.body.removeChild(div.previousSibling);
+            } else {
+                alert('No Square To Delete');
+            };
+        };
+    });
 });
 
 
-
+//.previousSibling
 
 
         //END OF CONTAINER//
