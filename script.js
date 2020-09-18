@@ -5,12 +5,21 @@ window.addEventListener("DOMContentLoaded", function() {
     let div = document.createElement('div');
     let button = document.createElement('button');
     button.innerText = 'Add Square';
-    div.appendChild(button);
+    document.body.appendChild(button);
     document.body.appendChild(div);
+
+    //create container for all divs//
+    let container = document.createElement('div');
+    container.className = "container";
+    document.body.appendChild(container);
+    
+
+   
 
 //add div when button is clicked, assign id number//
 let squareId = 0;
 button.addEventListener('click', function() {
+    
     let div = document.createElement('div');
     let p = document.createElement('p');
     squareId+1;
@@ -27,7 +36,9 @@ button.addEventListener('click', function() {
 
     //reverse of above//
     div.className = 'square';
-    document.body.appendChild(div);
+
+    //place all divs in container//
+    container.appendChild(div);
     div.addEventListener ('mouseleave', function() {
         p.style.color = "black";
     });
@@ -49,39 +60,29 @@ button.addEventListener('click', function() {
         return aRandomColor;
     }
 
-    //click square for random color
+    //click square for random color//
     div.addEventListener ('click', function() {
         let aRandomColor = randomColor();
         div.style.backgroundColor = aRandomColor; 
     });
-    //double click  with even/odd results
+    //double click  with even/odd results//
     div.addEventListener ('dblclick', function() {
         console.log("text");
         console.log(div.id);
         if (div.id %2 === 0) {
             if (div.nextSibling) {
-                document.body.removeChild(div.nextSibling);
+                container.removeChild(div.nextSibling);
             } else {
                 alert('No Square To Delete');
             };
         } else {        
             if (div.previousSibling) {
-                document.body.removeChild(div.previousSibling);
+                container.removeChild(div.previousSibling);
             } else {
                 alert('No Square To Delete');
             };
         };
     });
 });
-
-
-//.previousSibling
-
-
-        //END OF CONTAINER//
-})
-
-
-// for hover, maybe create paragraph, look up event listeners?
-//does my paragaraph need to be defined outside of the div?
-//
+      //END OF CONTAINER//
+});
