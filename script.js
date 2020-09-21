@@ -40,7 +40,7 @@ button.addEventListener('click', function() {
     //place all divs in container//
     container.appendChild(div);
     div.addEventListener ('mouseleave', function() {
-        p.style.color = "black";
+        p.style.color = "rgba(255, 255, 255, 0)";
     });
 
     //random colors//
